@@ -14,7 +14,7 @@ export default function Todos(params: ITodos) {
     }
     function crossItem(item: [string, boolean]) {
         console.log('cross item')
-        setList(list.map((listItem, i) => item === listItem ? [listItem[0], !listItem[1]] : listItem))
+        setList(list.map((listItem) => item === listItem ? [listItem[0], !listItem[1]] : listItem))
     }
     const mappedList = list
         .filter((todo) => navItem === 'completed' ? todo[1] === true : navItem === 'unfinished' ? todo[1] === false : todo)
