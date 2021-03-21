@@ -10,7 +10,7 @@ interface INavigation {
 export default function Navigation(params: INavigation) {
     const { list, setList } = params;
     const [filtered, setFiltered] = React.useState(list)
-    const [navItem, setNavItem] = React.useState('')
+    const [navItem, setNavItem] = React.useState('all')
     const nav = ['all', 'completed', 'unfinished'];
 
 
@@ -19,7 +19,7 @@ export default function Navigation(params: INavigation) {
     }, [list, navItem])
 
 
-    const navMap = nav.map((item) => <li onClick={() => setNavItem(item)}className={navItem===item? 'selected':undefined}>{item}</li>)
+    const navMap = nav.map((item) => <li key={item} onClick={() => setNavItem(item)}className={navItem===item? 'selected':undefined}>{item}</li>)
 
     return (<>
         <nav>

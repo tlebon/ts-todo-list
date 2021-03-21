@@ -17,7 +17,7 @@ export default function Todos(params: ITodos) {
     }
     const mappedList = list.map((item: [string, boolean], index: number) => (
         <li key={index}>
-            <input type="checkbox" onChange={() => crossItem(index)}></input>
+            <input type="checkbox" onClick={() => crossItem(index)} checked={item[1]}></input>
             <span className={item[1] === true ? 'cross' : undefined}>{item[0]}</span>
             <button onClick={() => removeItem(index)}>x</button>
         </li>))
