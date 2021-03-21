@@ -9,14 +9,14 @@ interface INavigation {
 
 export default function Navigation(params: INavigation) {
     const { list, setList } = params;
-    const [filtered, setFiltered] = React.useState(list)
+
     const [navItem, setNavItem] = React.useState('all')
     const nav = ['all', 'completed', 'unfinished'];
 
 
-    React.useEffect(() => {
-        navItem === 'all' ? setFiltered(list) : navItem === 'completed' ? setFiltered(list.filter(item => item[1] === true)) : setFiltered(list.filter(item => item[1] === false))
-    }, [list, navItem])
+    // React.useEffect(() => {
+    //     navItem === 'all' ? setFiltered(list) : navItem === 'completed' ? setFiltered(list.filter(item => item[1] === true)) : setFiltered(list.filter(item => item[1] === false))
+    // }, [list, navItem])
 
 
     const navMap = nav.map((item) => <li key={item} onClick={() => setNavItem(item)}className={navItem===item? 'selected':undefined}>{item}</li>)
@@ -27,7 +27,7 @@ export default function Navigation(params: INavigation) {
                 {navMap}
             </ul>
         </nav>
-        <Todos setList={setList} list={filtered} />
+        <Todos setList={setList} list={list} navItem={navItem}/>
 
     </>)
 }
