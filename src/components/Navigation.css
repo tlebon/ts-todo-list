@@ -1,0 +1,11 @@
+.navBar {
+	display: flex;
+	flex-direction: row;
+    list-style: none;
+}
+.navBar li{
+    padding:5px;
+}
+.selected{
+    font-weight: bold;
+}

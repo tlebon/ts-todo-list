@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 interface IEntry {
-    setList: React.Dispatch<React.SetStateAction<string[]>>
-    list: string[];
+    setList: React.Dispatch<React.SetStateAction<[string,boolean][]>>
+    list: [string,boolean][];
 
 }
 export default function Entry(params: IEntry) {
@@ -11,8 +11,8 @@ export default function Entry(params: IEntry) {
 
     function submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        console.log('submitted')
-        setList([...list, text])
+        setList([...list, [text, false]])
+        setText('')
     }
     return (
         <form onSubmit={(e) => submit(e)} >
