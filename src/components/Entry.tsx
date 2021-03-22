@@ -10,6 +10,9 @@ interface IEntry {
 export default function Entry(params: IEntry) {
     const { edit, setEdit, setList, list } = params;
     const [text, setText] = React.useState('');
+    const inputRef = React.useRef<HTMLInputElement>(null);
+
+    React.useEffect(() => inputRef?.current?.focus(), [inputRef])
 
     function submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -23,7 +26,7 @@ export default function Entry(params: IEntry) {
     }
     return (
         <form onSubmit={(e) => submit(e)} >
-            <input onChange={(e) => setText(e.target.value)} value={text}></input>
+            <input ref={inputRef} onChange={(e) => setText(e.target.value)} value={text}></input>
         </form>
     )
 }
