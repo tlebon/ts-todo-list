@@ -1,11 +1,11 @@
 import React from 'react';
 import Entry from './components/Entry';
 import Navigation from './components/Navigation'
-import ToDos from './components/ToDos';
+import ToDos, { ITodo } from './components/ToDos';
 import './App.css';
 
 function App() {
-  const [list, setList] = React.useState<[string, boolean][]>([])
+  const [list, setList] = React.useState<ITodo[]>([])
 
   const [navItem, setNavItem] = React.useState('all')
   return (

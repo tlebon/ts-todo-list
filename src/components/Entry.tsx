@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { ITodo } from './ToDos';
 
 interface IEntry {
-    setList: React.Dispatch<React.SetStateAction<[string, boolean][]>>
-    list: [string, boolean][];
+    setList: React.Dispatch<React.SetStateAction<ITodo[]>>
+    list: ITodo[];
     setEdit?: React.Dispatch<React.SetStateAction<number | null>>
     edit?: number;
 }
@@ -14,10 +15,10 @@ export default function Entry(params: IEntry) {
         e.preventDefault();
         if (setEdit) {
             console.log(text, edit)
-            setList(list.map((item, i) => i === edit ? [text, item[1]] : item))
+            setList(list.map((item, i) => i === edit ? { task: text, completed: item.completed } : item))
             setEdit(null)
         }
-        else { setList([...list, [text, false]]) }
+        else { setList([...list, { task: text, completed: false }]) }
         setText('')
     }
     return (
